@@ -86,6 +86,12 @@
         part
         (recur remaining (+ accumulated-size (:size (first remaining))))))))
 
+(defn add-hundred [n] (+ n 100))
+
+(defn dec-maker [n] #(- % n))
+
+(defn map-set [f collection] (set (map f collection)))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]

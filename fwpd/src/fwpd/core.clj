@@ -21,6 +21,10 @@
   (map #(clojure.string/split % #",")
        (clojure.string/split string #"\n")))
 
+(defn append
+  [suspects suspect]
+  (concat suspects [suspect]))
+
 (defn mapify
   "Return a sequence of maps like {:name \"Edward Cullen\" :glitter-index 10}"
   [rows]
@@ -30,6 +34,8 @@
                  {}
                  (map vector vamp-keys unmapped-row)))
        rows))
+
+(defn suspect-map [] (mapify (parse (slurp filename))))
 
 (defn glitter-filter
   [minimum-glitter records]

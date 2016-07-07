@@ -35,6 +35,14 @@
                  (map vector vamp-keys unmapped-row)))
        rows))
 
+(defn csvify-row
+  [record]
+  (clojure.string/join "," (list (:name record) (:glitter-index record))))
+
+(defn csvify
+  [records]
+  (clojure.string/join "\n" (map csvify-row records)))
+
 (defn suspect-map [] (mapify (parse (slurp filename))))
 
 (defn glitter-filter
